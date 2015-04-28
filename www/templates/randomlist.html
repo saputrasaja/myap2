@@ -1,0 +1,10 @@
+<ion-view view-title="Random">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="l in list"
+      	href="#/app/randomlist/{{l.min}}/{{l.max}}">
+        {{l.text}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

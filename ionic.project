@@ -1,0 +1,18 @@
+{
+  "name": "myApp2",
+  "app_id": "",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ],
+  "proxies": [
+    {
+      "path": "/f",
+      "proxyUrl": "http://threadbender.me/f/"
+    }
+  ]
+}

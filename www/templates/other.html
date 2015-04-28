@@ -1,0 +1,21 @@
+<ion-view view-title="Battery Status">
+    <ion-content>
+			<div class="card">
+            <div class="item item-text-wrap">
+                <ul class="list">
+                    <li class="item">
+                        Battery Level : {{rootbatteryLevel}} %
+                    </li>
+                    <li class="item">
+                        Plugged In : {{rootisPlugged}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <br/>
+        <button class="button button-block button-positive" ng-click="takePicture()">
+            Take a Picture
+        </button>
+        <img class="padding" ng-src="{{imgSrc}}">
+    </ion-content>
+</ion-view>
