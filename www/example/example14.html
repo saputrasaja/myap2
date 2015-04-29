@@ -1,0 +1,33 @@
+<html ng-app="ionicApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <title>Toggle Footer</title>
+
+  <link href="../css/ionic.app.css" rel="stylesheet">
+  <script src="../lib/ionic/js/ionic.bundle.js"></script>
+  <script>
+angular.module('ionicApp', ['ionic'])
+.controller('AppCtrl', function($scope) {
+  $scope.showFooter = true;
+  $scope.toggleFooter = function() {
+    console.log('Toggling footer');
+    $scope.showFooter = !$scope.showFooter;
+  }
+})
+  </script>
+  <style>
+  </style>
+  </head>
+
+  <body ng-controller="AppCtrl">
+    
+  <ion-content padding="true" ng-class="{'has-footer': showFooter}">
+    <button ng-click="toggleFooter()" class="button button-assertive">Toggle Footer</button>
+    </ion-content>
+  <ion-footer-bar class="bar-assertive" ng-if="showFooter">
+</ion-footer-bar>
+    
+  </body>
+</html>

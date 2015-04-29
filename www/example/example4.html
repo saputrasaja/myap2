@@ -1,0 +1,56 @@
+<html ng-app="ionicApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    
+    <title>Ionic Actionsheet</title>
+
+	<link href="../css/ionic.app.css" rel="stylesheet">
+	<script src="../lib/ionic/js/ionic.bundle.js"></script>
+	<script>
+angular.module('ionicApp', ['ionic'])
+
+.controller('AppCtrl', function($scope, $ionicActionSheet) {
+  
+  $scope.showActionsheet = function() {
+    
+    $ionicActionSheet.show({
+      titleText: 'ActionSheet Example',
+      buttons: [
+        { text: '<i class="icon ion-share"></i> Share' },
+        { text: '<i class="icon ion-arrow-move"></i> Move' },
+      ],
+      destructiveText: 'Delete',
+      cancelText: 'Cancel',
+      cancel: function() {
+        console.log('CANCELLED');
+      },
+      buttonClicked: function(index) {
+        console.log('BUTTON CLICKED', index);
+        return true;
+      },
+      destructiveButtonClicked: function() {
+        console.log('DESTRUCT');
+        return true;
+      }
+    });
+  };
+    
+
+});
+  </script>
+
+  </head>
+  <body ng-controller="AppCtrl">
+    
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Action Sheet</h1>
+    </ion-header-bar>
+    <ion-content class="padding">
+      <button class="button" ng-click="showActionsheet()">
+        Show Actionsheet
+      </button>
+    </ion-content>
+    
+  </body>
+</html>

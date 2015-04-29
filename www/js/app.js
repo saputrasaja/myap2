@@ -36,7 +36,8 @@
 			}
 			if (window.StatusBar) {
 				// org.apache.cordova.statusbar required
-				StatusBar.styleDefault();
+				// StatusBar.styleDefault();
+				StatusBar.hide();
 			}
 
 			document.addEventListener("deviceready", function () {
@@ -66,16 +67,6 @@
 					'menuContent': {
 						templateUrl: "templates/other.html",
 						controller: 'OtherCtrl'
-					}
-				},
-				cache: false
-			})
-			.state('app.other2', {
-				url: "/other2",
-				views: {
-					'menuContent': {
-						templateUrl: "templates/other2.html",
-						controller: 'OtherCtrl2'
 					}
 				},
 				cache: false

@@ -1,0 +1,77 @@
+<html ng-app="ionicApp"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> 
+    
+    <title>Ionic Custom Loading Bar</title>
+
+	<link href="../css/ionic.app.css" rel="stylesheet">
+	<script src="../lib/ionic/js/ionic.bundle.js"></script>
+	<script>
+angular.module('ionicApp', ['ionic'])
+
+.controller('MainCtrl', ['$scope', function($scope) {
+  $scope.data = {
+    isLoading: false
+  };
+}]);
+	</script>
+	<style>
+.bar.bar-loading {
+  display: block;
+  height: 24px;
+  
+  /* starts right below a normal header */
+  top: 44px;
+  
+  /* make the text centered vertically and horizontally */
+  text-align: center;
+  padding: 0;
+  line-height: 24px;
+
+  /* transition 'sliding down' (check below)*/
+  -webkit-transition: 200ms all;
+}
+
+
+/* 
+ * make the content's top changes animate.
+ * might not always look good, but looks
+ * good when our loader is added & removed
+ */
+.has-header {
+  -webkit-transition: 200ms top;
+}
+.has-header.has-loading {
+  /* 44px (header) + 24px */
+  top: 68px;
+}
+
+/* make loading bar slide up/down */
+.bar-loading.ng-enter,
+.bar-loading.ng-leave.ng-leave-active {
+  height: 0;
+  border-width: 0px;
+}
+.bar-loading.ng-enter.ng-enter-active,
+.bar-loading.ng-leave {
+  height: 24px;
+  border-width: 1px;
+}
+
+	</style>
+  
+  </head>
+  <body ng-controller="MainCtrl">
+    
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Hello!</h1>
+    </ion-header-bar>
+    <div class="bar bar-loading bar-assertive" ng-if="data.isLoading">
+      Loading...
+    </div>
+    <ion-content ng-class="{'has-loading': data.isLoading}">
+      <ion-toggle ng-model="data.isLoading">Toggle me to toggle loading!</ion-toggle>
+    </ion-content>
+    
+  </body>
+</html>

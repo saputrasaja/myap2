@@ -1,0 +1,179 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Ionic App</title>
+
+	<link href="../css/ionic.app.css" rel="stylesheet">
+	<script src="../lib/ionic/js/ionic.bundle.js"></script>
+	<script>
+angular.module('ionicApp', ['ionic'])
+
+.config(function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+  .state('intro', {
+    url: '/',
+    templateUrl: 'templates/intro.html',
+    controller: 'IntroCtrl'
+  })
+  .state('main', {
+    url: '/main',
+    templateUrl: 'templates/main.html',
+    controller: 'MainCtrl'
+  });
+
+  $urlRouterProvider.otherwise("/");
+
+})
+
+.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
+ 
+  // Called to navigate to the main app
+  $scope.startApp = function() {
+    $state.go('main');
+  };
+  $scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+  };
+  $scope.previous = function() {
+    $ionicSlideBoxDelegate.previous();
+  };
+
+  // Called each time the slide changes
+  $scope.slideChanged = function(index) {
+    $scope.slideIndex = index;
+  };
+})
+
+.controller('MainCtrl', function($scope, $state) {
+  console.log('MainCtrl');
+  
+  $scope.toIntro = function(){
+    $state.go('intro');
+  }
+});
+
+
+
+  </script>
+  <style>
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  padding-top: 80px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
+#logo {
+  margin: 30px 0px;
+}
+
+#list {
+  width: 170px;
+  margin: 30px auto;
+  font-size: 20px;
+}
+#list ol {
+  margin-top: 30px;
+}
+#list ol li {
+  text-align: left;
+  list-style: decimal;
+  margin: 10px 0px;
+}
+
+.button.ng-hide{
+  display:none;
+}
+
+  </style>
+  </head>
+
+  <body ng-app="ionicApp">
+
+    <ion-nav-bar class="bar-light">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-nav-view></ion-nav-view>
+
+
+    <script id="templates/intro.html" type="text/ng-template"> 
+      <ion-view view-title="Intro">
+        <ion-nav-buttons side="left">
+          <button class="button button-positive button-clear no-animation"
+                  ng-click="startApp()" ng-show="!slideIndex">
+            Skip Intro
+          </button>
+          <button class="button button-positive button-clear no-animation"
+                  ng-click="previous()" ng-show="slideIndex > 0">
+            Prev
+          </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right"> 
+          <button class="button button-positive button-clear no-animation"
+                  ng-click="next()" ng-show="slideIndex != 2">
+            Next
+          </button>
+          <button class="button button-positive button-clear no-animation"
+                  ng-click="startApp()" ng-show="slideIndex == 2">
+            Start App
+          </button>
+        </ion-nav-buttons>
+        <ion-slide-box on-slide-changed="slideChanged(index)">
+          <ion-slide>
+            <h3>Thank you for choosing the Awesome App!</h3>
+            <div id="logo">
+              <img src="http://code.ionicframework.com/assets/img/app_icon.png">
+            </div>
+            <p>
+              We&#39ve worked super hard to make you happy.
+            </p>
+            <p>
+              But if you are angry, too bad.
+            </p>
+          </ion-slide>
+          <ion-slide>
+            <h3>Using Awesome</h3>
+            
+            <div id="list">
+              <h5>Just three steps:</h5>
+              <ol>
+                <li>Be awesome</li>
+                <li>Stay awesome</li>
+                <li>There is no step 3</li>
+              </ol>
+            </div>
+          </ion-slide>
+          <ion-slide>
+            <h3>Any questions?</h3>
+            <p>
+              Too bad!
+            </p>
+          </ion-slide>
+        </ion-slide-box>
+      </ion-view>
+    </script>
+
+    <script id="templates/main.html" type="text/ng-template">
+      <ion-view hide-back-button="true" view-title="Awesome">
+        <ion-content class="padding">
+          <h1>Main app here</h1>
+          <button class="button" ng-click="toIntro()">Do Tutorial Again</button>
+        </ion-content>
+      </ion-view>
+    </script>
+    
+  </body>
+</html>

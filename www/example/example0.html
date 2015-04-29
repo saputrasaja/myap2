@@ -1,0 +1,61 @@
+<html ng-app="ionicApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Ionic Pull to Refresh</title>
+
+	<link href="../css/ionic.app.css" rel="stylesheet">
+	<script src="../lib/ionic/js/ionic.bundle.js"></script>
+	<style>
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}    
+p {
+  text-align: center;
+  margin-bottom: 40px !important;
+}
+.spinner svg {
+  width: 19% !important;
+  height: 85px !important;
+}
+	</style>
+	<script>
+angular.module('ionicApp', ['ionic'])
+
+.controller('MyCtrl', function($scope) {
+ 
+  
+});
+	</script>
+
+  </head>
+  <body ng-controller="MyCtrl">
+
+    <ion-header-bar class="bar-positive">
+      <h1 class="title">Animated SVGs</h1>
+    </ion-header-bar>
+
+    <ion-content>
+      <p>
+        <ion-spinner icon="android"></ion-spinner>
+        <ion-spinner icon="ios"></ion-spinner>
+        <ion-spinner icon="ios-small"></ion-spinner>
+        <ion-spinner icon="bubbles" class="spinner-balanced"></ion-spinner>
+        <ion-spinner icon="circles" class="spinner-energized"></ion-spinner>
+      </p>
+
+      <p>
+        <ion-spinner icon="crescent" class="spinner-royal"></ion-spinner>
+
+        <ion-spinner icon="dots" class="spinner-dark"></ion-spinner>
+        <ion-spinner icon="lines" class="spinner-calm"></ion-spinner>
+        <ion-spinner icon="ripple" class="spinner-assertive"></ion-spinner>
+        <ion-spinner icon="spiral"></ion-spinner>
+      </p>
+
+
+    </ion-content>
+
+  </body>
+</html>
