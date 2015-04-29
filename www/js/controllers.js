@@ -4,6 +4,7 @@
 	angular.module('app.controllers', [])
 
 	.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+		$scope.showLoginBtn = true;
 		// Form data for the login modal
 		$scope.loginData = {};
 
